@@ -1,0 +1,20 @@
+# Blueprint de Render: un Background Worker que revisa los buzones cada minuto.
+# Render → New → Blueprint → este repo. Las variables marcadas sync: false se
+# llenan a mano en el panel (no van en el repo).
+services:
+  - type: worker
+    name: ingesta-facturas
+    runtime: docker
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: SUPABASE_URL
+        value: https://hbctaadebquqrjfofwzt.supabase.co
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: MS_CLIENT_ID
+        sync: false
+      - key: MS_TENANT_ID
+        sync: false
+      - key: ALERT_EMAIL
+        sync: false
